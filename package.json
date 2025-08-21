@@ -1,0 +1,15 @@
+{
+  "name": "@misterdevs/qris-static-to-dynamic",
+  "version": "1.0.0",
+  "description": "Make your static qris to be dynamic easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "misterdevs",
+  "license": "ISC",
+  "dependencies": {
+    "@misterdevs/qris-parser": "^1.0.2"
+  }
+}

@@ -5,16 +5,18 @@ import { generateCRC16 } from "../helper/generateCRC16.js";
 export function generator(qris, amount, feeType = 0, feeAmount) {
   const qrisparse = qrisparser(qris);
 
-  //change payment method to dynamic
-  qrisparse["01"].value = "12";
+  if (amount) {
+    //change payment method to dynamic
+    qrisparse["01"].value = "12";
 
-  //insert amount to tag 54
-  const amountPadded = String(amount).padStart(2, "0");
-  qrisparse["54"] = {
-    name: qrisgettagname("54"),
-    length: amountPadded.length,
-    value: amountPadded,
-  };
+    //insert amount to tag 54
+    const amountPadded = String(amount).padStart(2, "0");
+    qrisparse["54"] = {
+      name: qrisgettagname("54"),
+      length: amountPadded.length,
+      value: amountPadded,
+    };
+  }
 
   //insert fee
   if (feeType !== 0) {

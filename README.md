@@ -1,4 +1,3 @@
-````markdown
 # QRIS Static to Dynamic Generator
 
 Library untuk mengubah **QRIS Statis** menjadi **QRIS Dinamis**, dengan dukungan:
@@ -22,7 +21,6 @@ Library untuk mengubah **QRIS Statis** menjadi **QRIS Dinamis**, dengan dukungan
 ```bash
 npm install @misterdevs/qris-static-to-dynamic
 ```
-````
 
 ---
 

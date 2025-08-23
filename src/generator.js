@@ -10,7 +10,7 @@ export function generator(qris, amount, feeType, feeAmount) {
   if (!isTLV(qris)?.valid) {
     throw new Error(`The QRIS is not valid: ${isTLV(qris)?.message}`);
   }
-  if (amount && amount < 2) {
+  if (amount && amount < 1) {
     throw new Error("The amount value must bigger than 0.");
   }
 

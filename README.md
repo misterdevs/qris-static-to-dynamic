@@ -70,7 +70,62 @@ console.log(qrDataUrl); // Bisa langsung dipakai di <img src="...">
 
 ---
 
-## 📄 Contoh Hasil
+## 📄 Contoh Hasil qrisdynamicgenerator
+
+### 1. Tanpa Fee
+
+```js
+qrisdynamicgenerator(staticQris, 1000);
+```
+
+Output:
+
+```
+...54051000...6304XXXX
+```
+
+- `54051000` → Transaction Amount Rp 1.000
+- `6304XXXX` → CRC dihitung ulang
+
+---
+
+### 2. Dengan Fixed Fee
+
+```js
+qrisdynamicgenerator(staticQris, 1000, 2, 5000);
+```
+
+Output:
+
+```
+...54051000...5502035000...6304XXXX
+```
+
+- `54051000` → Transaction Amount Rp 1.000
+- `5502035000` → Service Fee Rp 5.000 (fixed)
+- `6304XXXX` → CRC dihitung ulang
+
+---
+
+### 3. Dengan Percentage Fee
+
+```js
+qrisdynamicgenerator(staticQris, 1000, 3, 200);
+```
+
+Output:
+
+```
+...54051000...550303200...6304XXXX
+```
+
+- `54051000` → Transaction Amount Rp 1.000
+- `550303200` → Service Fee 200%
+- `6304XXXX` → CRC dihitung ulang
+
+---
+
+## 📄 Contoh Hasil qrisimagegenerator
 
 ```js
 const qrDataUrl = await qrisimagegenerator(qrisDynamic, 2, 6);
@@ -91,7 +146,9 @@ Di frontend bisa langsung:
 ---
 
 ## ⚠️ Catatan
-
+* Jika tidak butuh fee, cukup panggil `qrisdynamicgenerator(qris, amount)` saja.
+* CRC dihitung otomatis dengan standar BI (CRC16-CCITT XModem).
+* Hasil QRIS ini **hanya manipulasi string**, belum diverifikasi ke Bank Indonesia.
 * QR Code dibuat menggunakan library [qrcode](https://www.npmjs.com/package/qrcode).
 * Return berupa **DataURL base64**, tidak disimpan ke file.
 * Cocok untuk langsung ditampilkan di website atau aplikasi mobile.

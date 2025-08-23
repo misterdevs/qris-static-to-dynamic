@@ -1,6 +1,6 @@
 {
   "name": "@misterdevs/qris-static-to-dynamic",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Make your static qris to be dynamic easily",
   "main": "index.js",
   "scripts": {

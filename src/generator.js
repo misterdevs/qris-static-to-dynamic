@@ -1,10 +1,14 @@
 import { qrisgettagname, qrisparser } from "@misterdevs/qris-parser";
 import { toTLV } from "../helper/toTLV.js";
 import { generateCRC16 } from "../helper/generateCRC16.js";
+import { isTLV } from "../helper/isTLV.js";
 
 export function generator(qris, amount, feeType, feeAmount) {
   if (!qris) {
     throw new Error("The qris must be have a value.");
+  }
+  if (!isTLV(qris)?.valid) {
+    throw new Error(`The QRIS is not valid: ${isTLV(qris)?.message}`);
   }
   if (amount && amount < 1) {
     throw new Error("The amount value must bigger than 0.");
